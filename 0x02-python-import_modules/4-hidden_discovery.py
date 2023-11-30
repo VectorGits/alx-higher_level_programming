@@ -1,4 +1,4 @@
-#!/usr/bin/bash/python3
+#!/usr/bin/python3
 if __name__ == "__main__":
     # Print names defined by hidden_4 module ./hidden_4.pyc
     import hidden_4
