@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""
-Rectangle
+"""Rectangle
+
+Attributes:
+    number_of_instances (int): The number of Rectangle instances
 """
 
 
@@ -67,5 +69,5 @@ class Rectangle:
 
     def __del__(self):
         """Prints a message when an instance of rectangle is deleted"""
-        print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
