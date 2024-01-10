@@ -8,12 +8,22 @@ def pascal_triangle(n):
         n (int): number of rows in triangle
     Returns: list of lists of integers
     """
-    if n <= 0:
-        return[]
-    triangle = []
+    trix = []
+    rev = []
+
     for x in range(n):
-        row = [1] * (x + 1)
-    for y in range(1, x):
-        row[y] = triangle[x - 1][y - 1] + triangle[x - 1][y]
-    triangle.append(row)
-    return triangle
+        res_list = []
+        p1 = -1
+        p2 = 0
+        for y in range(len(rev) + 1):
+            if p1 == -1 or p2 == len(rev):
+                res_list.append(1)
+            else:
+                res_list.append(rev[p1] + rev[p2])
+            p1 += 1
+            p2 += 1
+
+        trix.append(res_list)
+        rev = res_list
+
+    return trix
