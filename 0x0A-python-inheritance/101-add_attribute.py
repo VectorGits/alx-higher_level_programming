@@ -3,7 +3,7 @@
 
 
 def add_attribute(obj, name, value):
-    """ Function that adds a new attribute to an object if it’s possible
+    """ Function that adds a new attribute to an object if its possible
 
     Args:
         obj: object to add the attribute to
@@ -18,5 +18,7 @@ def add_attribute(obj, name, value):
     if isinstance(obj, (int, str, float, list, dict, set, tuple, bool, type(None))):
         raise TypeError("can't add new attribute")
     if hasattr(obj, '__slots__') and name not in obj.__slots__:
+        raise TypeError("can't add new attribute")
+    if any(issubclass(type(obj), t) for t in (int, str, float, list, dict, set, tuple, bool)):
         raise TypeError("can't add new attribute")
     setattr(obj, name, value)
