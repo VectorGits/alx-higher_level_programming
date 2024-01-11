@@ -20,6 +20,6 @@ class Square(Rectangle):
         self.__size = size
         super().__init__(size, size)
 
-    def __str__(self):
-        """ Method that returns the string representation of the object """
-        return "[Square] {}/{}".format(self.__size, self.__size)
+    def area(self):
+        """ Method that returns a string with the area """
+        return super().area()
