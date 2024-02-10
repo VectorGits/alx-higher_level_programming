@@ -7,6 +7,11 @@ This is the "matrix_divided" module.
 def matrix_divided(matrix, div):
     """Divide all elements of a matrix by a number."""
 
+    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    if not all(isinstance(item, (int, float)) for row in matrix for item in row):
+        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    # rest of your code
     if not isinstance(matrix, list):
         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
     if not all(isinstance(row, list) for row in matrix):
