@@ -1,0 +1,12 @@
+The ``0-add_integer`` module
+===============================
+
+using ``add_integer``
+------------------------
+
+Import function from the module
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Adding 1 and 2
+	>>> add_integer(1, 3)
+	3
