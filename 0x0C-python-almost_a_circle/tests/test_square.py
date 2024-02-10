@@ -1,27 +1,12 @@
 #!/usr/bin/python3
-# test_square.py
-# Brennan D Baraban <375@holbertonschool.com>
-"""Defines unittests for models/square.py.
-Unittest classes:
-    TestSquare_instantiation - line 24
-    TestSquare_size - line 88
-    TestSquare_x - line 166
-    TestSquare_y - line 238
-    TestSquare_order_of_initialization - line 306
-    TestSquare_area - line 322
-    TestSquare_stdout - line 343
-    TestSquare_update_args - line 426
-    TestSquare_update_kwargs - line 538
-    TestSquare_to_dictionary - 640
-"""
+"""Defines unittests for Square.py"""
 import io
 import sys
 import unittest
 from models.base import Base
 from models.square import Square
 
-
-class TestSquare_instantiation(unittest.TestCase):
+class SquareInstantiationTestCase(unittest.TestCase):
     """Unittests for testing instantiation of the Square class."""
 
     def test_is_base(self):
@@ -85,7 +70,7 @@ class TestSquare_instantiation(unittest.TestCase):
         self.assertEqual(0, Square(10).y)
 
 
-class TestSquare_size(unittest.TestCase):
+class SquareSizeTestCase(unittest.TestCase):
     """Unittests for testing size initialization of the Square class."""
 
     def test_None_size(self):
@@ -162,7 +147,7 @@ class TestSquare_size(unittest.TestCase):
             Square(0, 2)
 
 
-class TestSquare_x(unittest.TestCase):
+class SquareXTestCase(unittest.TestCase):
     """Unittests for testing initialization of Square x attribute."""
 
     def test_None_x(self):
@@ -234,7 +219,7 @@ class TestSquare_x(unittest.TestCase):
             Square(5, -1, 0)
 
 
-class TestSquare_y(unittest.TestCase):
+class SquareYTestCase(unittest.TestCase):
     """Unittests for testing initialization of Square y attribute."""
 
     def test_None_y(self):
@@ -302,7 +287,7 @@ class TestSquare_y(unittest.TestCase):
             Square(3, 0, -1)
 
 
-class TestSquare_order_of_initialization(unittest.TestCase):
+class SquareOrderOfInitializationTestCase(unittest.TestCase):
     """Unittests for testing order of Square attribute initialization."""
 
     def test_size_before_x(self):
@@ -318,7 +303,7 @@ class TestSquare_order_of_initialization(unittest.TestCase):
             Square(1, "invalid x", "invalid y")
 
 
-class TestSquare_area(unittest.TestCase):
+class SquareAreaTestCase(unittest.TestCase):
     """Unittests for testing the area method of the Square class."""
 
     def test_area_small(self):
@@ -339,7 +324,7 @@ class TestSquare_area(unittest.TestCase):
             s.area(1)
 
 
-class TestSquare_stdout(unittest.TestCase):
+class SquareStdoutTestCase(unittest.TestCase):
     """Unittests for testing __str__ and display methods of Square class."""
 
     @staticmethod
@@ -362,7 +347,7 @@ class TestSquare_stdout(unittest.TestCase):
 
     def test_str_method_print_size(self):
         s = Square(4)
-        capture = TestSquare_stdout.capture_stdout(s, "print")
+        capture = SquareStdoutTestCase.capture_stdout(s, "print")
         correct = "[Square] ({}) 0/0 - 4\n".format(s.id)
         self.assertEqual(correct, capture.getvalue())
 
@@ -395,23 +380,23 @@ class TestSquare_stdout(unittest.TestCase):
     # Test display method
     def test_display_size(self):
         s = Square(2, 0, 0, 9)
-        capture = TestSquare_stdout.capture_stdout(s, "display")
+        capture = SquareStdoutTestCase.capture_stdout(s, "display")
         self.assertEqual("##\n##\n", capture.getvalue())
 
     def test_display_size_x(self):
         s = Square(3, 1, 0, 18)
-        capture = TestSquare_stdout.capture_stdout(s, "display")
+        capture = SquareStdoutTestCase.capture_stdout(s, "display")
         self.assertEqual(" ###\n ###\n ###\n", capture.getvalue())
 
     def test_display_size_y(self):
         s = Square(4, 0, 1, 9)
-        capture = TestSquare_stdout.capture_stdout(s, "display")
+        capture = SquareStdoutTestCase.capture_stdout(s, "display")
         display = "\n####\n####\n####\n####\n"
         self.assertEqual(display, capture.getvalue())
 
     def test_display_size_x_y(self):
         s = Square(2, 3, 2, 1)
-        capture = TestSquare_stdout.capture_stdout(s, "display")
+        capture = SquareStdoutTestCase.capture_stdout(s, "display")
         display = "\n\n   ##\n   ##\n"
         self.assertEqual(display, capture.getvalue())
 
@@ -421,7 +406,7 @@ class TestSquare_stdout(unittest.TestCase):
             s.display(1)
 
 
-class TestSquare_update_args(unittest.TestCase):
+class SquareUpdateArgsTestCase(unittest.TestCase):
     """Unittests for testing update args method of the Square class."""
 
     def test_update_args_zero(self):
@@ -533,7 +518,7 @@ class TestSquare_update_args(unittest.TestCase):
             s.update(89, 1, "invalid", "invalid")
 
 
-class TestSquare_update_kwargs(unittest.TestCase):
+class SquareUpdateKwargsTestCase(unittest.TestCase):
     """Unittests for testing update kwargs method of Square class."""
 
     def test_update_kwargs_one(self):
@@ -635,7 +620,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
         self.assertEqual("[Square] (89) 10/10 - 5", str(s))
 
 
-class TestSquare_to_dictionary(unittest.TestCase):
+class SquareToDictionaryTestCase(unittest.TestCase):
     """Unittests for testing to_dictionary method of the Square class."""
 
     def test_to_dictionary_output(self):
@@ -653,7 +638,6 @@ class TestSquare_to_dictionary(unittest.TestCase):
         s = Square(10, 10, 10, 10)
         with self.assertRaises(TypeError):
             s.to_dictionary(1)
-
 
 if __name__ == "__main__":
     unittest.main()
