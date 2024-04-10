@@ -9,6 +9,6 @@ const fileC = process.argv[4];
 const contentA = fs.readFileSync(fileA, 'utf-8');
 const contentB = fs.readFileSync(fileB, 'utf-8');
 
-const contentC = contentA + contentB;
+const contentC = contentA + '\n' + contentB;
 
 fs.writeFileSync(fileC, contentC);
