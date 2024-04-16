@@ -1,20 +1,25 @@
 #!/usr/bin/python3
 """
-Takes in an argument and displays all values in the states
- table of hbtn_0e_0_usa where name matches the argument.
+This script queries the 'states' table in a MySQL database
+for rows with a given state name.
 """
-
+from sys import argv
 import MySQLdb
-import sys
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name \
-                = %s ORDER BY id ASC", (sys.argv[4],))
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
-    cur.close()
-    db.close()
+    # Connect to MySQL database using command line arguments
+    connection = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+
+    # Create cursor object
+    cur = connection.cursor()
+
+    # Execute SQL query with parameterized state name
+    # to avoid SQL injection attacks
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
+                (argv[4],))
+
+    # Fetch and display query results
+    states = cur.fetchall()
+    # Display Results
+    for state in states:
+        print(state)
