@@ -17,7 +17,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    objs = session.query(State).outerjoin(City).all()
+    objs = session.query(State).all()
     if objs:
         for state in objs:
             print(f"{state.id}: {state.name}")
