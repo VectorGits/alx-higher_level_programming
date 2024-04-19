@@ -20,5 +20,4 @@ if __name__ == "__main__":
 
     if updateState:
         updateState.name = 'New Mexico'
-        session.commit()
-    session.close()
+        session.commit()  # Commit the changes to the database
