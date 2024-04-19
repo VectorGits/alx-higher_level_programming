@@ -1,25 +1,28 @@
 #!/usr/bin/python3
-"""model state
 """
-from sqlalchemy import create_engine
-from relationship_city import City
-from relationship_state import State, Base
-from sqlalchemy.orm import sessionmaker
+Lists all States and corresponding Cities in the database hbtn_0e_101_usa.
+"""
 import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from relationship_state import State
+from relationship_city import City
 
 if __name__ == "__main__":
-    engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(
-            sys.argv[1], sys.argv[2], sys.argv[3]
-        ),
-        pool_pre_ping=True,
-    )
-    Base.metadata.create_all(engine)
+    # Create a SQLAlchemy engine to connect to the MySQL server
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
+                           pool_pre_ping=True)
+
+    # Create a session factory to manage database connections
     Session = sessionmaker(bind=engine)
+
+    # Create a new session object
     session = Session()
-    objs = session.query(State).all()
-    if objs:
-        for state in objs:
-            print(f"{state.id}: {state.name}")
-            for city in state.cities:
-                print(f"\t{city.id}: {city.name}")
+
+    # Query all State objects from the database and,
+    # print them along with their Cities
+    for state in session.query(State).order_by(State.id):
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("\t{}: {}".format(city.id, city.name))
