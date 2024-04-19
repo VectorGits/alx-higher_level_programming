@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Start link class to table in database
+"""Delete all State objects with a name containing the letter a
 """
 import sys
 from model_state import Base, State
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine, select, insert
 
 if __name__ == "__main__":
     engine = create_engine(
@@ -16,10 +16,15 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    deleteStates = session.query(State).filter(State.name.like(f'%a%')).all()
-    if deleteStates:
-        for state in deleteStates:
-            session.delete(state)
-        session.commit()
 
-    session.close()
+    # Use filter() to get states with a name containing 'a'
+    states_to_delete = session.query(State).filter(
+        State.name.like('%a%')
+    ).all()
+
+    # Delete each state
+    for state in states_to_delete:
+        session.delete(state)
+
+    # Commit the changes to the database
+    session.commit()
