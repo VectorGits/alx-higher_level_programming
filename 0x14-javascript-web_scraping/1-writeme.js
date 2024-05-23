@@ -1,5 +1,4 @@
 #!/usr/bin/node
-// Write to file
 
 const fs = require('fs');
 
