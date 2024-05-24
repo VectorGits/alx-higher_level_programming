@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// prints all characters of a Star Wars movie ID
+// Retrieve and print all Star Wars character names from a movie ID
 
 const request = require('request');
 const movieID = process.argv[2];
