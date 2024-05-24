@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// computes the number of tasks completed by user id
+// prints all characters of a Star Wars movie ID
 
 const request = require('request');
 const movieID = process.argv[2];
