@@ -1,7 +1,7 @@
 ## 0x14-javascript-web-scraping
 
 
-### 0. Readme
+### 0. [Readme](./0-readme.js) 
 Write a script that reads and prints the content of a file.
 
  - The first argument is the file path
@@ -23,7 +23,7 @@ guillaume@ubuntu:~/0x14$ ./0-readme.js doesntexist
 guillaume@ubuntu:~/0x14$ 
 ```
 
-### 1. Write me
+### 1. [Write me](./1-writeme.js)
 Write a script that writes a string to a file.
 
 - The first argument is the file path
@@ -37,7 +37,7 @@ Python is cool
 guillaume@ubuntu:~/0x14$ 
 ```
 
-### 2. Status code
+### 2. [Status code](./2-statuscode.js)
 Write a script that display the status code of a `GET` request.
 
 - The first argument is the URL to request (`GET`)
@@ -51,7 +51,7 @@ code: 404
 guillaume@ubuntu:~/0x14$ 
 ```
 
-### 3. Star wars movie title
+### 3. Star wars movie title | [3-starwars_title.js](./3-starwars_title.js)
 Write a script that prints the title of a Star Wars movie where the episode number matches a given integer.
 
 - The first argument is the movie ID
@@ -119,7 +119,7 @@ guillaume@ubuntu:~/0x14$ ./6-completed_tasks.js https://jsonplaceholder.typicode
 guillaume@ubuntu:~/0x14$
 ```
 
-### 7. Who was playing in this movie?
+### 7. Who was playing in this movie? --- Advanced
 Write a script that prints all characters of a Star Wars movie:
 
 - The first argument is the Movie ID - example: `3` = “Return of the Jedi”
