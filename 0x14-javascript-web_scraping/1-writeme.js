@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Write to file
+// Write arg to file overwrite if exists
 
 const fs = require('fs');
 const filePath = process.argv[2];
