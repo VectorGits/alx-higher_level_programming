@@ -4,7 +4,7 @@
  * not allowed to use document.querySelector
  * must use JQuery API
  */
-const $ = window.$;
+const $ = window.$;	// jQuery is imported in the HTML file
 $(document).ready(function () {
   $('#red_header').click(function () {
     $('header').css('color', '#FF0000');
